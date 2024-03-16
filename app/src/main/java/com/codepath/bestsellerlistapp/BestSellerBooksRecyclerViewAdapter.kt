@@ -1,10 +1,16 @@
 package com.codepath.bestsellerlistapp
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.codepath.bestsellerlistapp.R.id
 
 /**
@@ -29,8 +35,12 @@ class BestSellerBooksRecyclerViewAdapter(
      */
     inner class BookViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         var mItem: BestSellerBook? = null
+        val mBookRank = mView.findViewById<TextView>(id.ranking)
         val mBookTitle: TextView = mView.findViewById<View>(id.book_title) as TextView
         val mBookAuthor: TextView = mView.findViewById<View>(id.book_author) as TextView
+        val mBookImage:ImageView =mView.findViewById<ImageView>(id.book_image)
+        val mBookDescrition: TextView = mView.findViewById<View>(id.book_description) as TextView
+        val mBookAmazon = mView.findViewById<Button>(id.buy_button);
 
         override fun toString(): String {
             return mBookTitle.toString() + " '" + mBookAuthor.text + "'"
@@ -44,12 +54,23 @@ class BestSellerBooksRecyclerViewAdapter(
         val book = books[position]
 
         holder.mItem = book
+        holder.mBookRank.text = book.rank.toString()
         holder.mBookTitle.text = book.title
         holder.mBookAuthor.text = book.author
+        holder.mBookDescrition.text = book.description
+        holder.mBookAmazon.setOnClickListener{
+
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(book.amazonUrl))
+            startActivity(it.context, browserIntent, null)
+        }
+
+
+        Glide.with(holder.mView).load(book.imageURL).centerInside().into(holder.mBookImage)
+
 
         holder.mView.setOnClickListener {
             holder.mItem?.let { book ->
-                mListener?.onItemClick(book)
+               // mListener?.onItemClick(book)
             }
         }
     }
