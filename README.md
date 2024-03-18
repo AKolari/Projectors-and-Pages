@@ -1,6 +1,6 @@
 # Android Project 3 - *Projectors And Pages*
 
-Submitted by: **Andi Kolaru**
+Submitted by: **Andi Kolari**
 
 **Projectors And Pages** is a movie browsing app that allows users to browse movies currently playing in theaters.
 
