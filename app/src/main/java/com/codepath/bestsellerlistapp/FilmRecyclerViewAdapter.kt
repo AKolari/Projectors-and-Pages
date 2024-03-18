@@ -5,18 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepath.bestsellerlistapp.R.id
 import org.w3c.dom.Text
 
 /**
- * [RecyclerView.Adapter] that can display a [Film] and makes a call to the
- * specified [OnListFragmentInteractionListener].
+ * [RecyclerView.Adapter] that can display a [Film]
  */
 class FilmRecyclerViewAdapter(
     private val films: List<Film>,
-    private val mListener: OnListFragmentInteractionListener?
+    //private val mListener: OnListFragmentInteractionListener?
 )
     : RecyclerView.Adapter<FilmRecyclerViewAdapter.FilmViewHolder>()
 {
@@ -63,7 +63,7 @@ class FilmRecyclerViewAdapter(
 
         holder.mView.setOnClickListener {
             holder.mItem?.let { film ->
-                mListener?.onItemClick(film)
+                Toast.makeText(it.context, "test: " + holder.mItem?.title, Toast.LENGTH_LONG).show()
             }
         }
     }

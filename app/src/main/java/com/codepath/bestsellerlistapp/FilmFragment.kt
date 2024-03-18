@@ -3,7 +3,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,13 +13,11 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 
 import com.codepath.bestsellerlistapp.Film
 import com.codepath.bestsellerlistapp.FilmRecyclerViewAdapter
-import com.codepath.bestsellerlistapp.OnListFragmentInteractionListener
 import com.codepath.bestsellerlistapp.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Headers
 import org.json.JSONArray
-import org.json.JSONObject
 
 // --------------------------------//
 // CHANGE THIS TO BE YOUR API KEY  //
@@ -31,7 +28,7 @@ private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
  * The class for the only fragment in the app, which contains the progress bar,
  * recyclerView, and performs the network calls to the NY Times API.
  */
-class FilmFragment : Fragment(), OnListFragmentInteractionListener {
+class FilmFragment : Fragment() {
 
     /*
      * Constructing the view
@@ -86,7 +83,7 @@ class FilmFragment : Fragment(), OnListFragmentInteractionListener {
                     val arrayFilmType = object : TypeToken<List<Film>>() {}.type
 
                     val models : List<Film> = gson.fromJson(filmJSONString, arrayFilmType)
-                    recyclerView.adapter = FilmRecyclerViewAdapter(models, this@FilmFragment)
+                    recyclerView.adapter = FilmRecyclerViewAdapter(models)
 
                     // Look for this in Logcat:
                     Log.d("FilmFragment", "response successful")
@@ -118,8 +115,12 @@ class FilmFragment : Fragment(), OnListFragmentInteractionListener {
     /*
      * What happens when a particular book is clicked.
      */
+
+    /*
     override fun onItemClick(item: Film) {
         Toast.makeText(context, "test: " + item.title, Toast.LENGTH_LONG).show()
     }
+
+     */
 
 }

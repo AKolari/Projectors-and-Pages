@@ -27,7 +27,7 @@ private const val API_KEY = "6Iw5axwOCIbCgr7X2hTIYA4pq6h7EgIg"
  * The class for the only fragment in the app, which contains the progress bar,
  * recyclerView, and performs the network calls to the NY Times API.
  */
-class BestSellerBooksFragment : Fragment(), OnListFragmentInteractionListener {
+class BestSellerBooksFragment : Fragment(){
 
     /*
      * Constructing the view
@@ -82,7 +82,7 @@ class BestSellerBooksFragment : Fragment(), OnListFragmentInteractionListener {
                 val arrayBookType = object : TypeToken<List<BestSellerBook>>() {}.type
 
                 val models : List<BestSellerBook> = gson.fromJson(bookJSONString, arrayBookType)
-                recyclerView.adapter = BestSellerBooksRecyclerViewAdapter(models, this@BestSellerBooksFragment)
+                recyclerView.adapter = BestSellerBooksRecyclerViewAdapter(models)
 
                 // Look for this in Logcat:
                 Log.d("BestSellerBooksFragment", "response successful")
@@ -111,11 +111,6 @@ class BestSellerBooksFragment : Fragment(), OnListFragmentInteractionListener {
 
     }
 
-    /*
-     * What happens when a particular book is clicked.
-     */
-    override fun onItemClick(item: Film) {
-        Toast.makeText(context, "test: " + item.title, Toast.LENGTH_LONG).show()
-    }
+
 
 }

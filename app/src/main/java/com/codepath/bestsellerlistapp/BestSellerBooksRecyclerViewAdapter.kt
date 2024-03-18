@@ -8,18 +8,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepath.bestsellerlistapp.R.id
 
 /**
- * [RecyclerView.Adapter] that can display a [BestSellerBook] and makes a call to the
- * specified [OnListFragmentInteractionListener].
+ * [RecyclerView.Adapter] that can display a [BestSellerBook]
  */
 class BestSellerBooksRecyclerViewAdapter(
-    private val books: List<BestSellerBook>,
-    private val mListener: OnListFragmentInteractionListener?
+    private val books: List<BestSellerBook>
     )
     : RecyclerView.Adapter<BestSellerBooksRecyclerViewAdapter.BookViewHolder>()
     {
@@ -28,14 +29,15 @@ class BestSellerBooksRecyclerViewAdapter(
             .inflate(R.layout.fragment_best_seller_book, parent, false)
         return BookViewHolder(view)
     }
-
+        var expanded = false
     /**
      * This inner class lets us refer to all the different View elements
      * (Yes, the same ones as in the XML layout files!)
      */
     inner class BookViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+
         var mItem: BestSellerBook? = null
-        val mBookRank = mView.findViewById<TextView>(id.ranking)
+        //val mBookRank = mView.findViewById<TextView>(id.ranking)
         val mBookTitle: TextView = mView.findViewById<View>(id.book_title) as TextView
         val mBookAuthor: TextView = mView.findViewById<View>(id.book_author) as TextView
         val mBookImage:ImageView =mView.findViewById<ImageView>(id.book_image)
@@ -54,10 +56,28 @@ class BestSellerBooksRecyclerViewAdapter(
         val book = books[position]
 
         holder.mItem = book
-        holder.mBookRank.text = book.rank.toString()
+        //holder.mBookRank.text = book.rank.toString()
         holder.mBookTitle.text = book.title
         holder.mBookAuthor.text = book.author
         holder.mBookDescrition.text = book.description
+
+        holder.mBookDescrition.setOnClickListener{
+            if(expanded){
+                expanded=false
+                //holder.mBookDescrition.maxEms=5
+                holder.mBookAmazon.isInvisible=true
+                holder.mBookDescrition.maxLines = 3
+
+            }
+            else{
+                expanded=true
+                holder.mBookAmazon.isVisible=true
+                holder.mBookDescrition.maxLines = 10
+
+
+            }
+        }
+
         holder.mBookAmazon.setOnClickListener{
 
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(book.amazonUrl))
@@ -69,8 +89,8 @@ class BestSellerBooksRecyclerViewAdapter(
 
 
         holder.mView.setOnClickListener {
-            holder.mItem?.let { book ->
-               // mListener?.onItemClick(book)
+            holder.mItem?.let {
+                //Toast.makeText( it.context, "test: " + item.title, Toast.LENGTH_LONG).show()
             }
         }
     }

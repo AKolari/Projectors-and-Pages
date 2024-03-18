@@ -23,8 +23,9 @@
         android:id="@+id/film_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:textSize="32sp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="6dp"
+        android:textSize="28sp"
         app:layout_constraintStart_toEndOf="@id/film_image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
