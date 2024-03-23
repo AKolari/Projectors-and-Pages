@@ -1,5 +1,6 @@
 package com.codepath.bestsellerlistapp
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +37,7 @@ class FilmRecyclerViewAdapter(
         val mFilmTitle: TextView = mView.findViewById<View>(id.film_title) as TextView
 
         val mFilmImage:ImageView =mView.findViewById<ImageView>(id.film_image)
-        val mFilmDescrition: TextView = mView.findViewById<View>(id.film_description) as TextView
+        //val mFilmDescrition: TextView = mView.findViewById<View>(id.film_description) as TextView
 
 
         override fun toString(): String {
@@ -54,7 +55,7 @@ class FilmRecyclerViewAdapter(
 
         holder.mFilmTitle.text = film.title
 
-        holder.mFilmDescrition.text = film.description
+        //holder.mFilmDescrition.text = film.description
 
 
 
@@ -63,7 +64,11 @@ class FilmRecyclerViewAdapter(
 
         holder.mView.setOnClickListener {
             holder.mItem?.let { film ->
-                Toast.makeText(it.context, "test: " + holder.mItem?.title, Toast.LENGTH_LONG).show()
+                //Toast.makeText(it.context, "test: " + holder.mItem?.title, Toast.LENGTH_LONG).show()
+                val intent = Intent(it.context, FilmDetailActivity::class.java)
+                intent.putExtra("FILM_EXTRA", film)
+                it.context.startActivity(intent)
+
             }
         }
     }

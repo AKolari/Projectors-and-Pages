@@ -41,7 +41,7 @@ class FilmFragment : Fragment() {
         val progressBar = view.findViewById<View>(R.id.progress) as ContentLoadingProgressBar
         val recyclerView = view.findViewById<View>(R.id.list) as RecyclerView
         val context = view.context
-        recyclerView.layoutManager = GridLayoutManager(context, 1)
+        recyclerView.layoutManager = GridLayoutManager(context, 2)
         updateAdapter(progressBar, recyclerView)
         return view
     }
@@ -60,8 +60,8 @@ class FilmFragment : Fragment() {
 
 // Using the client, perform the HTTP request
         client[
-            "https://api.themoviedb.org/3/movie/now_playing?&api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed",
-            params,
+            "https://api.themoviedb.org/3/trending/movie/week?&api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed",
+
             object : JsonHttpResponseHandler()
 
             {
