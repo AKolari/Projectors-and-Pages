@@ -1,6 +1,6 @@
 # Android Project 3 - *Projectors And Pages*
 
-Submitted by: **Andi Kolaru**
+Submitted by: **Andi Kolari**
 
 **Projectors And Pages** is a movie browsing app that allows users to browse movies currently playing in theaters.
 
@@ -16,19 +16,14 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Improve and customize the user interface through styling and coloring
-- [ ] Implement orientation responsivity
-  - App should neatly arrange data in both landscape and portrait mode
-- [ ] Implement Glide to display placeholder graphics during loading
-  - Note: this feature is difficult to capture in a GIF without throttling internet speeds.  Instead, include an additional screencap of your Glide code implementing the feature.  (<10 lines of code)
-
 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-![ProjectorsAndPages-ezgif com-optimize](https://github.com/AKolari/Projectors-and-Pages/assets/90071560/c6ccdd42-ce80-481b-a1ed-19741ee5af83)
+![ProjectorsAndPages-ezgif com-optimize (3)](https://github.com/AKolari/Projectors-and-Pages/assets/90071560/f4a37526-c44b-4ea0-85b6-85d2dcd7ae48)
+
 
 
 <!-- Replace this with whatever GIF tool you used! -->
